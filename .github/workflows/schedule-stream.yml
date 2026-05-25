@@ -1,0 +1,23 @@
+name: Schedule weekly YouTube stream
+
+on:
+  schedule:
+    # Mondays 12:00 UTC = Mondays 09:00 Uruguay (6 days before the target Sunday)
+    - cron: '0 12 * * MON'
+  workflow_dispatch:
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-audit --no-fund
+      - run: node scripts/schedule-stream.mjs
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          TEMPLATE_BROADCAST_ID: OrMZkhsdeE4
