@@ -3,7 +3,7 @@ name: Schedule weekly YouTube stream
 on:
   schedule:
     # Mondays 12:00 UTC = Mondays 09:00 Uruguay (6 days before the target Sunday)
-    - cron: '0 12 * * MON'
+    - cron: '0 12 * * THU'
   workflow_dispatch:
 
 jobs:
