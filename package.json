@@ -1,0 +1,12 @@
+{
+  "name": "youtube-stream-scheduler",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "schedule": "node scripts/schedule-stream.mjs",
+    "get-token": "node scripts/get-refresh-token.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}
